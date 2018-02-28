@@ -14,4 +14,4 @@ Additional information is added to the project locations with the *FourSquare AP
 - FourSquare API
 
 ## How to use
-Clone or download this repository and simply open the index.html file and enjoy!
+Clone or download this repository and simply open the *index.html* file.
