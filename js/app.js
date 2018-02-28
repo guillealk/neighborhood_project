@@ -2,19 +2,19 @@ var Location = function(data) {
     this.title = data.title;
     this.location = data.location;
   };
-  
+
 var ViewModel = function() {
     var self = this;
-    
+
     self.locationsList = ko.observableArray([]);
-    
+
     locations.forEach(function(location) {
         self.locationsList.push(new Location(location));
     });
 
     self.mapError = ko.observable(false);
-    
-    self.filter = ko.observable('');
+
+    self.filter = ko.observable("");
     self.filteredLocations = ko.computed(function() {
         var filterResult = self.filter().toLowerCase();
         if (!filterResult) {
@@ -25,7 +25,8 @@ var ViewModel = function() {
                 if (self.locationsList()[i].marker) {
                     self.locationsList()[i].marker.setVisible(true);
                 }
-            }//end for loop
+            }
+
             return self.locationsList();
         } else {
             return ko.utils.arrayFilter(self.locationsList(), function(location) {
@@ -42,8 +43,8 @@ var ViewModel = function() {
     }, self);
 
     self.clearFilter = function() {
-        self.filter('');
-        
+        self.filter("");
+
         for (var i = 0; i < self.locationsList().length; i++) {
             //get all the markers back
             self.locationsList()[i].marker.setVisible(true);
@@ -59,6 +60,7 @@ var ViewModel = function() {
         //populating the info window by clicked marker from list
         populateInfoWindow(clickedLocation.marker, infoWindow);
     };
+
     //Observable for Menu Button
     self.visibleMenu = ko.observable(false),
     //Showing or hiding the menu
